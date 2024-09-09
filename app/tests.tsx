@@ -75,7 +75,7 @@ const Test: React.FunctionComponent<TestPropsModel> = ({ upperCardTitle, tasks, 
         );
     };
 
-    const handleMenuClick = ({ key }: { key: string }, taskId: number) => {
+    const handleMenuClick = ({ key }: { key: string }, taskId: string) => {
         // Add status change logic here
         console.log(`Task ID: ${taskId}, Status changed to: ${key}`);
     };
