@@ -144,4 +144,39 @@ const revenue = [
   { month: 'Dec', revenue: 4800 },
 ];
 
-export { users, customers, invoices, revenue };
+const tasks = [
+  {
+    id: "2c0417a8-836d-4037-8975-1ac081f8b5c9",
+    title: 'Brainstorming',
+    date: "18/09/2024",
+    description: "Brainstorming brings team members' diverse experience into play.",
+    priority: "HIGH",
+    status: "TODO"
+  },
+  {
+    id: "69deca05-ccdb-4867-9161-78c13571fb6e",
+    title: 'Wireframes',
+    date: "19/09/2024",
+    description: "It just needs to adapt the UI from what you did before",
+    priority: "HIGH",
+    status: "COMPLETED"
+  },
+  {
+    id: "12068cb2-25e9-4db3-bebb-d467246cff5d",
+    title: 'Onboarding Illustrations',
+    date: "18/10/2024",
+    description: "",
+    priority: "LOW",
+    status: "IN_PROGRESS"
+  },
+  {
+    id: "b5df43c2-1b3c-40cb-808e-fc2ea3f462ee",
+    title: 'Design System',
+    date: "12/10/2024",
+    description: "It just needs to adapt the UI from what you did before",
+    priority: "MEDIUM",
+    status: "COMPLETED"
+  }
+]
+
+export { users, customers, invoices, revenue, tasks };
