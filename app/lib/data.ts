@@ -6,6 +6,7 @@ import {
   InvoicesTable,
   LatestInvoiceRaw,
   Revenue,
+  TaskType,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -25,6 +26,20 @@ export async function fetchRevenue() {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch revenue data.');
+  }
+}
+
+export async function fetchTasks() {
+  try {
+    
+console.log("POSTGRES_URL: ", process.env.POSTGRES_URL)
+    // const data = await sql<TaskType[]>`SELECT * FROM tasks`;
+
+    // console.log('Data fetch completed after 3 seconds.', data);
+
+    return 'data.rows';
+  } catch (error) {
+    console.error('Database Error:', error);
   }
 }
 

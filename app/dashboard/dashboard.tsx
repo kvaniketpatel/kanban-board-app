@@ -1,30 +1,24 @@
 'use client'
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { Col, Row, Form, Input, DatePicker, Select, Button, Modal } from 'antd';
 import Test from "../tests";
 import moment from 'moment';
+import { TaskType } from "../lib/definitions";
+import { fetchTasks } from "../lib/data";
 
 const { Option } = Select;
-export type taskType = {
-    id: number
-    title: string
-    description: string
-    date: string
-    status: "COMPLETED" | "IN_PROGRESS" | "TODO"
-    priority: "HIGH" | "MEDIUM" | "LOW"
-}
 
 const Dashboard = () => {
     const [tasks, setSetTasks] = useState<{
-        todo: taskType[];
-        in_progress: taskType[];
-        completed: taskType[];
+        todo: TaskType[];
+        in_progress: TaskType[];
+        completed: TaskType[];
     }>({
         todo: [
             {
-                id: 1,
+                id: "1",
                 title: 'Brainstorming',
                 date: "18/09/2024",
                 description: "Brainstorming brings team members' diverse experience into play.",
@@ -32,7 +26,7 @@ const Dashboard = () => {
                 status: "TODO"
             },
             {
-                id: 2,
+                id: "2",
                 title: 'Wireframes',
                 date: "19/09/2024",
                 description: "It just needs to adapt the UI from what you did before",
@@ -42,7 +36,7 @@ const Dashboard = () => {
         ],
         completed: [
             {
-                id: 201,
+                id: "201",
                 title: 'Onboarding Illustrations',
                 date: "18/10/2024",
                 description: "",
@@ -52,7 +46,7 @@ const Dashboard = () => {
         ],
         in_progress: [
             {
-                id: 301,
+                id: "301",
                 title: 'Design System',
                 date: "12/10/2024",
                 description: "It just needs to adapt the UI from what you did before",
@@ -63,6 +57,18 @@ const Dashboard = () => {
     });
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [form] = Form.useForm();
+
+    const fetchTasksData = async () => {
+        try {
+
+            const data = await fetchTasks();
+
+            console.log("fetchTasksData : ", data);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -80,7 +86,7 @@ const Dashboard = () => {
             if (values.status === 'COMPLETED') {
                 return {
                     ...prev, completed: [...prev.completed, {
-                        id: prev.completed.length + 1,
+                        id: `${prev.completed.length + 1}`,
                         date: moment(values.date).format('L'),
                         description: values.description,
                         priority: values.priority,
@@ -92,7 +98,7 @@ const Dashboard = () => {
             if (values.status === 'IN_PROGRESS') {
                 return {
                     ...prev, in_progress: [...prev.in_progress, {
-                        id: prev.in_progress.length + 1,
+                        id: `${prev.in_progress.length + 1}`,
                         date: moment(values.date).format('L'),
                         description: values.description,
                         priority: values.priority,
@@ -103,7 +109,7 @@ const Dashboard = () => {
             }
             return {
                 ...prev, todo: [...prev.todo, {
-                    id: prev.todo.length + 1,
+                    id: `${prev.todo.length + 1}`,
                     date: moment(values.date).format('L'),
                     description: values.description,
                     priority: values.priority,

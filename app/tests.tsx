@@ -2,12 +2,12 @@ import React from "react";
 import { Card, Col, Row, Dropdown, Menu, Tag, Button, Modal } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import Image from 'next/image';
-import { taskType } from "./dashboard/page";
+import { TaskType } from "./lib/definitions";
 
 
 interface TestPropsModel {
     upperCardTitle: string
-    tasks: taskType[]
+    tasks: TaskType[]
     color: string
 }
 
@@ -40,7 +40,7 @@ const Test: React.FunctionComponent<TestPropsModel> = ({ upperCardTitle, tasks, 
     };
 
 
-    const renderTaskCard = (task: taskType) => {
+    const renderTaskCard = (task: TaskType) => {
         const menu = (
             <Menu onClick={(info) => handleMenuClick(info, task.id)}>
                 <Menu.Item key="TODO">Todo</Menu.Item>
@@ -75,7 +75,7 @@ const Test: React.FunctionComponent<TestPropsModel> = ({ upperCardTitle, tasks, 
         );
     };
 
-    const handleMenuClick = ({ key }: { key: string }, taskId: number) => {
+    const handleMenuClick = ({ key }: { key: string }, taskId: string) => {
         // Add status change logic here
         console.log(`Task ID: ${taskId}, Status changed to: ${key}`);
     };
