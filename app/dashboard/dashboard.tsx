@@ -6,7 +6,6 @@ import { Col, Row, Form, Input, DatePicker, Select, Button, Modal } from 'antd';
 import Test from "../tests";
 import moment from 'moment';
 import { TaskType } from "../lib/definitions";
-import { fetchTasks } from "../lib/data";
 
 const { Option } = Select;
 
@@ -57,18 +56,6 @@ const Dashboard = () => {
     });
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [form] = Form.useForm();
-
-    const fetchTasksData = async () => {
-        try {
-
-            const data = await fetchTasks();
-
-            console.log("fetchTasksData : ", data);
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const showModal = () => {
         setIsModalVisible(true);
